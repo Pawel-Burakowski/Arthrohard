@@ -7,6 +7,9 @@ export default {
 				white: "#FFFFFF",
 				black: "#111111",
 				red: "#AB303C",
+				green: "#30AB4C",
+				backgroundColor: "#f6f6f6",
+				backgroundColor2: "#D9D9D9"
 			},
 			fontSize: {
 				heading: "120px",
