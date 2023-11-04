@@ -6,9 +6,12 @@
 		<transition name="menu-slide">
 			<ul v-if="isMenuVisible" class="menu bg-white shadow-custom" @click.stop>
 				<li v-for="link in links" :key="link.name" class="py-5 px-4">
-					<a :href="link.link" class="text-base md:text-xl hover:underline">{{
-						link.name
-					}}</a>
+					<a
+						href="#"
+						class="text-base md:text-xl hover:underline"
+						@click="scrollToSection(link.link)"
+						>{{ link.name }}</a
+					>
 				</li>
 			</ul>
 		</transition>
@@ -37,6 +40,17 @@ export default {
 			}
 		}
 
+		const scrollToSection = sectionId => {
+			const section = document.querySelector(sectionId)
+			if (section) {
+				window.scrollTo({
+					top: section.offsetTop,
+					behavior: "smooth",
+				})
+				props.toggleMenu()
+			}
+		}
+
 		onMounted(() => {
 			document.addEventListener("click", handleClick)
 		})
@@ -44,6 +58,10 @@ export default {
 		onBeforeUnmount(() => {
 			document.removeEventListener("click", handleClick)
 		})
+
+		return {
+			scrollToSection,
+		}
 	},
 }
 </script>

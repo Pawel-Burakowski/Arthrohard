@@ -69,7 +69,8 @@
 		</section>
 
 		<section
-			class="overflow-hidden px-4 pb-[100px] pt-[150px] bg-backgroundColor"
+			id="about-us"
+			class="overflow-hidden px-4 pb-[100px] pt-[100px] bg-backgroundColor"
 		>
 			<div class="wrapper relative z-30 translate-y-[100px] px-3">
 				<div class="flex flex-col items-center">
@@ -292,8 +293,10 @@
 			</div>
 		</section>
 
-		<section class="overflow-hidden px-4">
-			<div class="wrapper mb-[108px] translate-y-[100px]">
+		<section 
+		id="composition"
+		class="overflow-hidden px-4">
+			<div class="wrapper mb-[100px] translate-y-[150px]">
 				<div class="flex flex-col items-center">
 					<h2
 						class="mb-4 text-center text-3xl sm:text-4xl 2xl:text-heading2 2xl:leading-[60px]"

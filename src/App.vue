@@ -2,6 +2,7 @@
 	<NavbarComponent />
 	<MainContent />
 	<ParalaxComponent />
+	<ProductsComponent />
 	
 </template>
 
@@ -9,6 +10,7 @@
 import NavbarComponent from "../src/components/NavbarComponent.vue"
 import MainContent from "../src/components/MainContent.vue"
 import ParalaxComponent from "../src/components/ParalaxComponent.vue"
+import ProductsComponent from "../src/components/ProductsComponent.vue"
 
 export default {
 	name: "App",
@@ -16,7 +18,8 @@ export default {
 	components: {
 		NavbarComponent,
 		MainContent,
-		ParalaxComponent
+		ParalaxComponent,
+		ProductsComponent
 	},
 
 	data: () => ({
