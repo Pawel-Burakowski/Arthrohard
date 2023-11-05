@@ -7,17 +7,23 @@
 					class="border-[1px] border-red bg-white px-3 py-2"
 					>Liczba produktów na stronie</label
 				>
-				<div class="custom-select relative flex">
+				<div class="relative flex">
 					<select
 						id="selectPerSize"
 						class="select relative w-full vsm:w-[100px] py-2 cursor-pointer border-none bg-red pl-[35px] text-white"
+						v-model="itemsPerPage"
 						@change="fetchProducts"
 					>
 						<option value="10">10</option>
-						<option selected value="20">20</option>
+						<option value="20">20</option>
 						<option value="30">30</option>
 						<option value="50">50</option>
 					</select>
+					<img
+						src="../images/select-arrow.svg"
+						alt=""
+						class="absolute right-5 top-1/2 w-3 -translate-y-1/2"
+					/>
 				</div>
 			</div>
 			<div
@@ -42,7 +48,7 @@
 			class="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 p-2 text-heading3"
 		>
 			<div
-				class="relative h-[350px] w-full max-w-[800px] rounded-md bg-white p-3"
+				class="relative h-[250px] w-full max-w-[800px] rounded-md bg-white p-3"
 			>
 				<button
 					@click="closeProductDetails"
@@ -62,17 +68,15 @@
 						/>
 					</svg>
 				</button>
-				<div class="flex h-full flex-col justify-between">
+				<div class="flex h-full flex-col justify-between font-[500]">
 					<span
-						>ID <span data-content="popup">{{ selectedProduct.id }}</span></span
+						>ID <span>{{ selectedProduct.id }}</span></span
 					>
 					<span
-						>Nazwa:
-						<span data-content="popup">{{ selectedProduct.name }}</span></span
+						>Nazwa: <span>{{ selectedProduct.name }}</span></span
 					>
 					<span
-						>Wartość:
-						<span data-content="popup">{{ selectedProduct.value }}</span></span
+						>Wartość: <span>{{ selectedProduct.value }}</span></span
 					>
 				</div>
 			</div>
@@ -97,7 +101,6 @@ export default {
 		window.addEventListener("scroll", this.onScroll)
 	},
 	methods: {
-
 		fetchProducts() {
 			return new Promise(async (resolve, reject) => {
 				try {
@@ -115,13 +118,17 @@ export default {
 
 		loadMoreProducts() {
 			return new Promise(async (resolve, reject) => {
-				this.loadedProducts += this.itemsPerPage
+				const newLoadedProducts =
+					this.itemsPerPage *
+					(Math.floor(this.loadedProducts / this.itemsPerPage) + 1)
 
 				try {
 					const response = await axios.get(
-						`https://brandstestowy.smallhost.pl/api/random?pageNumber=1&pageSize=${this.loadedProducts}`
+						`https://brandstestowy.smallhost.pl/api/random?pageNumber=1&pageSize=${newLoadedProducts}`
 					)
 					this.products = response.data.data
+					this.loadedProducts = newLoadedProducts
+
 					resolve()
 				} catch (error) {
 					console.error("Błąd podczas pobierania danych z API", error)
@@ -129,13 +136,16 @@ export default {
 				}
 			})
 		},
+
 		showProductDetails(product) {
 			this.selectedProduct = product
 			event.preventDefault()
 		},
+
 		closeProductDetails() {
 			this.selectedProduct = null
 		},
+
 		onScroll() {
 			if (
 				window.innerHeight + window.scrollY >=
@@ -148,4 +158,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+</style>

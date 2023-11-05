@@ -1,6 +1,6 @@
 <template>
 	<main class="mt-[15px]">
-		<section class="relative z-20 w-full px-8 pt-8 bg-backgroundColor">
+		<section id="#" class="relative z-20 w-full px-8 pt-8 bg-backgroundColor">
 			<div class="translate-y-[80px]">
 				<img
 					src="../images/Vector_3.png"
@@ -70,7 +70,7 @@
 
 		<section
 			id="about-us"
-			class="overflow-hidden px-4 pb-[100px] pt-[100px] bg-backgroundColor"
+			class="overflow-hidden px-4 pb-[200px] pt-[100px] bg-backgroundColor"
 		>
 			<div class="wrapper relative z-30 translate-y-[100px] px-3">
 				<div class="flex flex-col items-center">
@@ -127,20 +127,15 @@
 								poważnymi problemami stawowymi.
 							</p>
 						</div>
+
 						<div class="relative mt-12">
-							<div class="group relative">
+							<div class="group relative image-underline">
 								<img
 									src="../images/shutterstock_1770486131 1.png"
 									alt="shutterstock_1770486131 1.png"
 									class="relative z-20 rounded-md"
 								/>
 							</div>
-
-							<img
-								src="../images/Line 17.png"
-								alt="Line 17.png.png"
-								class="relative z-20 mt-4"
-							/>
 
 							<img
 								src="../images/Vector_5.png"
@@ -200,7 +195,7 @@
 
 						<div class="relative mt-12">
 							<div
-								class="group relative flex flex-col items-center justify-center gap-y-5 vsm:flex-row"
+								class="group relative flex flex-col items-center justify-center gap-y-5 vsm:flex-row image-underline"
 							>
 								<img
 									src="../images/Pexels Photo by Thirdman.png"
@@ -214,11 +209,7 @@
 									class="relative z-20 vsm:ml-5"
 								/>
 							</div>
-							<img
-								src="../images/Line 17.png"
-								alt="Line 17.png.png"
-								class="relative z-20 mt-4"
-							/>
+
 							<img
 								src="../images/Vector_7.png"
 								alt="Vector_7.png"
@@ -262,21 +253,14 @@
 							</p>
 						</div>
 						<div class="relative mt-12">
-							<div class="group relative">
+							<div class="group relative image-underline">
 								<img
 									src="../images/shutterstock_2171764885 1.png"
 									alt="shutterstock_2171764885 1.png"
 									class="relative z-20 rounded-md"
 								/>
-								<div
-									class="custom-underline group-hover:custom-underline-hover"
-								></div>
 							</div>
-							<img
-								src="../images/Line 17.png"
-								alt="Line 17.png.png"
-								class="relative z-20 mt-4"
-							/>
+
 							<img
 								src="../images/Vector_9.png"
 								alt="Vector_9.png"
@@ -293,9 +277,7 @@
 			</div>
 		</section>
 
-		<section 
-		id="composition"
-		class="overflow-hidden px-4">
+		<section id="composition" class="overflow-hidden px-4">
 			<div class="wrapper mb-[100px] translate-y-[150px]">
 				<div class="flex flex-col items-center">
 					<h2
@@ -332,7 +314,7 @@
 								class="flex h-[70px] w-[70px] rounded-full bg-backgroundColor2 shadow-lg"
 							></div>
 							<h3
-								class="myunderline group relative flex flex-col items-center gap-5 text-xl md:text-heading3"
+								class="myunderline group relative flex flex-col items-center gap-5 text-xl"
 							>
 								Siarczan glukozaminy
 								<span
@@ -394,7 +376,7 @@
 							</p>
 						</div>
 					</div>
-					<div class="relative 2xl:h-[1238px] shrink-0">
+					<div class="relative 2xl:h-[1250px] shrink-0">
 						<div>
 							<img
 								src="../images/sad 1.png"
@@ -413,7 +395,7 @@
 							/>
 						</div>
 						<button
-							class="hover-colors-300 absolute bottom-[5%] z-50 mt-5 w-max translate-x-1/2 bg-red px-10 py-2 text-normal font-[500] text-white sm:bottom-20 sm:left-[200px] sm:translate-x-6"
+							class="hover-colors-300 absolute bottom-[5%] z-50 mt-5 w-max translate-x-1/2 bg-red px-10 py-2 text-normal font-[500] text-white sm:bottom-20 sm:left-[200px] sm:translate-x-6 hover:bg-red/80"
 						>
 							Kup teraz
 						</button>
@@ -504,5 +486,26 @@ export default {
 <style>
 .myunderline {
 	@apply after:absolute after:bottom-12 after:left-0 after:h-[1px] after:w-full after:origin-center after:scale-x-0 after:bg-black after:transition-all after:duration-300 after:content-[''] after:hover:scale-x-100;
+}
+
+.image-underline {
+	position: relative;
+}
+
+.image-underline::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #111111;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s;
+}
+
+.image-underline:hover::after {
+	transform: scaleX(1);
 }
 </style>

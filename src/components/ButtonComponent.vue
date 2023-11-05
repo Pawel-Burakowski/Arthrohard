@@ -7,7 +7,7 @@
 			<ul v-if="isMenuVisible" class="menu bg-white shadow-custom" @click.stop>
 				<li v-for="link in links" :key="link.name" class="py-5 px-4">
 					<a
-						href="#"
+						:href="link.link"
 						class="text-base md:text-xl hover:underline"
 						@click="scrollToSection(link.link)"
 						>{{ link.name }}</a
